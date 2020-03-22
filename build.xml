@@ -13,7 +13,9 @@
                 <attribute name="Class-Path" value="."/>
             </manifest>
             <fileset dir="${dir.jarfile}/bin"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.jarfile}/lib/jcommon-1.0.23.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${dir.jarfile}/lib/jimObjModelImporterJFX.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.jarfile}/lib/jfreechart-1.0.19.jar"/>
         </jar>
     </target>
 </project>

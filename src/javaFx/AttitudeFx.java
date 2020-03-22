@@ -100,7 +100,7 @@ public class AttitudeFx {
 		this.frameX = framex;
 		this.frameY = framey;
 		this.ref1 = ( - frameX*1.2);
-		this.ref2 = ( - frameY*1.2);
+		this.ref2 = ( - frameY*0.7);
 
 	}
 

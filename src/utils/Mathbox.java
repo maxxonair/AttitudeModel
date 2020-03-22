@@ -1,6 +1,8 @@
 
 package utils;
 
+import utils.Quaternion;
+import utils.Vector3;
 
 public class Mathbox{
     public static double PI = 3.14159265358979323846264338327950288419716939937510582097494459230781640628620899862803482534211706798214808;
@@ -336,21 +338,21 @@ public class Mathbox{
 		return EulerAngles;
 	}
 	
-	public static double[][] Euler2Quarternions(double[][] E){
-		double[][] Quarternions = {{1},{0},{0},{0}};
-		Quarternions[0][0] = Math.cos(Math.toRadians(E[0][0]/2)) * Math.cos(Math.toRadians(E[1][0]/2)) * Math.cos(Math.toRadians(E[2][0]/2)) 
-				+ Math.sin(Math.toRadians(E[0][0]/2)) * Math.sin(Math.toRadians(E[1][0]/2)) * Math.sin(Math.toRadians(E[2][0]/2));
+	public static Quaternion Euler2Quarternions(Vector3 E){
+		Quaternion Quat = new Quaternion();
+		Quat.w = Math.cos(Math.toRadians(E.x/2)) * Math.cos(Math.toRadians(E.y/2)) * Math.cos(Math.toRadians(E.z/2)) 
+				+ Math.sin(Math.toRadians(E.x/2)) * Math.sin(Math.toRadians(E.y/2)) * Math.sin(Math.toRadians(E.z/2));
 		
-		Quarternions[1][0] = Math.sin(Math.toRadians(E[0][0]/2)) * Math.cos(Math.toRadians(E[1][0]/2)) * Math.cos(Math.toRadians(E[2][0]/2)) 
-				- Math.cos(Math.toRadians(E[0][0]/2)) * Math.sin(Math.toRadians(E[1][0]/2)) * Math.sin(Math.toRadians(E[2][0]/2));
+		Quat.x = Math.sin(Math.toRadians(E.x/2)) * Math.cos(Math.toRadians(E.y/2)) * Math.cos(Math.toRadians(E.z/2)) 
+				- Math.cos(Math.toRadians(E.x/2)) * Math.sin(Math.toRadians(E.y/2)) * Math.sin(Math.toRadians(E.z/2));
 		
-		Quarternions[2][0] = Math.cos(Math.toRadians(E[0][0]/2)) * Math.sin(Math.toRadians(E[1][0]/2)) * Math.cos(Math.toRadians(E[2][0]/2)) 
-				+ Math.sin(Math.toRadians(E[0][0]/2)) * Math.cos(Math.toRadians(E[1][0]/2)) * Math.sin(Math.toRadians(E[2][0]/2));
+		Quat.y = Math.cos(Math.toRadians(E.x/2)) * Math.sin(Math.toRadians(E.y/2)) * Math.cos(Math.toRadians(E.z/2)) 
+				+ Math.sin(Math.toRadians(E.x/2)) * Math.cos(Math.toRadians(E.y/2)) * Math.sin(Math.toRadians(E.z/2));
 		
-		Quarternions[3][0] =  Math.cos(Math.toRadians(E[0][0]/2)) * Math.cos(Math.toRadians(E[1][0]/2)) * Math.sin(Math.toRadians(E[2][0]/2)) 
-				+ Math.sin(Math.toRadians(E[0][0]/2)) * Math.sin(Math.toRadians(E[1][0]/2)) * Math.cos(Math.toRadians(E[2][0]/2));
+		Quat.z =  Math.cos(Math.toRadians(E.x/2)) * Math.cos(Math.toRadians(E.y/2)) * Math.sin(Math.toRadians(E.z/2)) 
+				+ Math.sin(Math.toRadians(E.x/2)) * Math.sin(Math.toRadians(E.y/2)) * Math.cos(Math.toRadians(E.z/2));
 		
-		return Quarternions;
+		return Quat;
 	}
 
 }
